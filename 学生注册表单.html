@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>学生注册表单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- 新 Bootstrap5 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+		 
+		<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+		
+		<style>
+			div {
+				margin-top: 20px;
+			}
+		</style>
+		
+		<script>
+			function check() {
+				//校验用户名
+				var username = document.getElementById("username").value;
+				var usernameReg = /^[\u4e00-\u9fa5]{2,}$/;
+				if (!usernameReg.test(username)) {
+					alert("用户名格式错误！");
+					return false;
+				}
+				
+				//校验手机号
+				var phoneNumber = document.getElementById("phoneNumber").value;
+				var phoneNumberReg = /^\d{11}$/;
+				if (!phoneNumberReg.test(phoneNumber)) {
+					alert("手机号格式错误！");
+					return false;
+				}
+				
+				//校验邮箱
+				var email = document.getElementById("email").value;
+				var emailReg = /^[A-Za-z0-9]+@[A-Za-z]+\.(com|cn|gov\.cn)$/;
+				if (!email=="") {
+					if (!emailReg.test(email)) {
+					alert("邮箱格式错误！");
+					return false;
+					}
+				}
+				
+				
+				//校验密码
+				var password = document.getElementById("password").value;
+				var passwordReg = /^[A-Za-z0-9]{6,}$/;
+				if (!passwordReg.test(password)) {
+					alert("密码格式错误！");
+					return false;
+				}
+				
+				//校验两次密码是否一致
+				var passwordAgain = document.getElementById("passwordAgain").value;
+				if (password == passwordAgain) {
+					alert("注册成功！");
+					return true;
+				} else {
+					alert("两次密码不一致！");
+					return false;
+				}
+			}
+		</script>
+		
+	
+	</head>
+	<body>
+		<div class="container">
+			<h1 style="text-align: center;">学生注册表单</h1>
+			<form onsubmit="return check()">
+				姓名：<input id="username" type="text" placeholder="请输入您的姓名" class="form-control">
+				<br />
+				手机号：<input id="phoneNumber" type="text" placeholder="请输入11位手机号" class="form-control"/>
+				<br />
+				邮箱：<input id="email" type="text" placeholder="可选，如：student@school.com" class="form-control"/>
+				<br />
+				密码：<input id="password" type="password" placeholder="至少6位，包含字母和数字" class="form-control"/>
+				<br />
+				确认密码：<input id="passwordAgain" type="password" placeholder="请再次输入密码" class="form-control"/>
+				<br />
+				<button class="btn btn-primary d-block w-100">注册</button>
+			</form>
+		</div>
+		
+	</body>
+</html>
